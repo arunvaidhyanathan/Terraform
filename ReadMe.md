@@ -18,9 +18,8 @@ To delete the infra - terraform destroy
 Create a VPC
 go to AWS and Search for VPC and create a new vpc with name myvpc
 
+## CIDR (Classless Inter-Domain Routing)
 
-##CIDR (Classless Inter-Domain Routing)
--------------------------------------
 At its core, CIDR is a notation system for representing IP address blocks. It's used to efficiently allocate and manage IP addresses. The key is the slash (/) notation:
 
 IP Address/Prefix Length: 10.0.0.0/16
@@ -34,7 +33,7 @@ How CIDR Works (IPv4 Example: 10.0.0.0/16)
 Use code with caution.
 The first 16 bits (the first two octets) are fixed: 00001010.00000000 which translates to 10.0.
 The remaining bits (32 - 16 = 16 bits) are available for host addresses within that network.
-This CIDR block 10.0.0.0/16 represents the IP address range 10.0.0.0 to 10.0.255.255. It can accommodate 2<sup>16</sup> (65,536) addresses. However, you typically subtract two addresses: one for the network address itself (e.g., 10.0.0.0) and one for the broadcast address (e.g., 10.0.255.255), leaving 65,534 usable host addresses.
+This CIDR block 10.0.0.0/16 represents the IP address range 10.0.0.0 to 10.0.255.255. It can accommodate 2, 16(65,536) addresses. However, you typically subtract two addresses: one for the network address itself (e.g., 10.0.0.0) and one for the broadcast address (e.g., 10.0.255.255), leaving 65,534 usable host addresses.
 CIDR in AWS
 
 In AWS, CIDR blocks are fundamental for defining:
@@ -111,12 +110,14 @@ The concept of CIDR applies equally to IPv6. The syntax is the same, but the add
 Example IPv6 CIDR: 2001:db8::/32
 2001:db8:: is the base IPv6 address.
 /32 is the prefix length.
-AWS and IPv6:
+
+## AWS and IPv6
 
 AWS supports IPv6 in VPCs. You can associate both IPv4 and IPv6 CIDR blocks with a VPC.
 Subnets can be configured to be IPv6-only, IPv4-only, or dual-stack (supporting both).
 You need to configure routing and security groups to handle IPv6 traffic.
-Terraform and IPv6:
+
+## Terraform and IPv6
 
 In Terraform, you would use IPv6 CIDR blocks in the cidr_block argument of resources like aws_vpc and aws_subnet when you want to create IPv6-enabled VPCs and subnets.
 Terraform also has the cidrsubnet() function that can be used with IPv6 prefixes. You have the cidrhost() and cidrnetmask() as well.
@@ -142,9 +143,8 @@ resource "aws_subnet" "public" {
     Name = "public-subnet"
   }
 }
-Use code with caution.
-Terraform
-Key Takeaways
+
+## Terraform Key Takeaways
 
 CIDR is a fundamental notation for representing IP address blocks.
 It's essential for defining VPCs, subnets, route tables, and security groups in AWS.
@@ -152,12 +152,7 @@ Terraform uses CIDR blocks extensively in resource configurations, especially wi
 AWS and Terraform support both IPv4 and IPv6. IPv6 is the future and provides a much larger address space.
 When working with IPv6, the same CIDR concepts apply, just with longer addresses.
 
-
-
-
-
-    -
-Create Policy:
+## Create Policy
 
 {
     "Version": "2025-02-22",
