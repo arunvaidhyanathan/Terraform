@@ -63,3 +63,4 @@ variable "myobject" {
         name = "arun"
         port = [22, 25, 80]
 }
+}
