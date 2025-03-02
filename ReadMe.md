@@ -15,6 +15,10 @@ To apply the infra - terraform apply
 
 To delete the infra - terraform destroy
 
+Create a VPC
+go to AWS and Search for VPC and create a new vpc with name myvpc
+
+
 ##CIDR (Classless Inter-Domain Routing)
 -------------------------------------
 At its core, CIDR is a notation system for representing IP address blocks. It's used to efficiently allocate and manage IP addresses. The key is the slash (/) notation:
